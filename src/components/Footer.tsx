@@ -59,6 +59,14 @@ export default function Footer() {
                 text-transform: uppercase;
                 margin: 0 0 16px;
             }
+            .footer-links {
+                list style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+            }
             .footer-links a{
                 font-size: 13.5px;
                 color: #374151;
@@ -79,6 +87,8 @@ export default function Footer() {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
+                flex-wrap: wrap;
+                gap: 12px;
             }
             .footer-copy {
                 font-size: 12px;
@@ -94,15 +104,24 @@ export default function Footer() {
                 font-weight: 500;
                 letter-spacing: 0.02em;
                 }
+            @media (max-width: 900px){
+                .footer-root { padding: 48px 40px 36px; }
+                .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px 32px; }
+                .footer-tagline { max-width: 100%; }
+                }
+            @media (max-width: 560px) {
+                .footer-root { padding: 40px 20px 32px; }
+                .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+                .footer-bottom { flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 32px; }
+            }
         `}</style>
 
         <footer className="footer-root">
             <div className="footer-inner">
                 <div>
                     <p className="footer-brand-name">
-                        <span className="footer-brand-dot">
+                        <span className="footer-brand-dot"/>
                             IntroSync
-                        </span>
                     </p>
                     <p className="footer-tagline">
                         Automating IndiaMART pipelines into intelligent CRM systems.
