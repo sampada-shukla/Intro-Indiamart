@@ -943,7 +943,7 @@ const ProgressBar = ({ current, total, color }: {
   current: number;
   total: number;
   color: string;
-}) => {
+}): React.ReactElement => (
   <div style={{ width: '100%', height: '4px', background: 'rgba(0,0,0,0.08)', borderRadius: '4px', overflow: 'hidden' }}>
     <motion.div
       animate={{ width: `${((current + 1) / total) * 100}%` }}
@@ -951,7 +951,7 @@ const ProgressBar = ({ current, total, color }: {
       style={{ height: '100%', background: `linear-gradient(to right, ${color}, ${color}99)`, borderRadius: '4px', boxShadow: `0 0 8px ${color}60` }}
     />
   </div>
-}
+)
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function TutorialPage() {
