@@ -9,7 +9,6 @@ import {
   Plug,
   Link,
   Globe,
-  CreditCard,
   MessageSquare,
   ArrowUp,
   ArrowDown,
@@ -351,10 +350,16 @@ const ALL_STEPS = tutorialSections.flatMap(s => s.steps)
 const TOTAL_STEPS = ALL_STEPS.length
 
 // ─── ZOOM MODAL ───────────────────────────────────────────────────────────────
-const ZoomModal = ({ show, onClose, step, isMobile }) => {
+const ZoomModal = ({ show, onClose, step, isMobile }: {
+  show: boolean;
+  onClose: () => void;
+  step: TutorialStep | null;
+  isMobile: boolean;
+}) => {
+  
   useEffect(() => {
     if (!show) return
-    const fn = (e) => { if (e.key === 'Escape') onClose() }
+    const fn = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     document.addEventListener('keydown', fn)
     document.body.style.overflow = 'hidden'
     return () => { document.removeEventListener('keydown', fn); document.body.style.overflow = '' }
@@ -637,7 +642,19 @@ const IndexSidebar = ({ activeGlobalIdx, onJump, isOpen, onToggle, footerOffset 
 
 
 // ─── STEP CARD ────────────────────────────────────────────────────────────────
-const StepCard = ({ step, isMobile, isTablet, globalIdx, canPrev, canNext, onPrev, onNext, setGlobalIdx, setIsUserNavigation }) => {
+const StepCard = ({ step, isMobile, isTablet, globalIdx, canPrev, canNext, onPrev, onNext, setGlobalIdx, setIsUserNavigation }:
+  {
+    step: TutorialStep;
+    isMobile: boolean;
+    isTablet: boolean;
+    globalIdx: number;
+    canPrev: boolean;
+    canNext: boolean;
+    onPrev: () => void;
+    onNext: () => void;
+    setGlobalIdx: (idx: number) => void;
+    setIsUserNavigation: (val: boolean) => void;
+  }) => {
   const [showZoom, setShowZoom] = useState(false)
   const [imgLoaded, setImgLoaded] = useState(false)
   const Icon = step.icon
@@ -922,7 +939,11 @@ const StepCard = ({ step, isMobile, isTablet, globalIdx, canPrev, canNext, onPre
 }
 
 // ─── PROGRESS BAR ─────────────────────────────────────────────────────────────
-const ProgressBar = ({ current, total, color }) => (
+const ProgressBar = ({ current, total, color }: {
+  current: number;
+  total: number;
+  color: string;
+}) => {
   <div style={{ width: '100%', height: '4px', background: 'rgba(0,0,0,0.08)', borderRadius: '4px', overflow: 'hidden' }}>
     <motion.div
       animate={{ width: `${((current + 1) / total) * 100}%` }}
@@ -930,7 +951,7 @@ const ProgressBar = ({ current, total, color }) => (
       style={{ height: '100%', background: `linear-gradient(to right, ${color}, ${color}99)`, borderRadius: '4px', boxShadow: `0 0 8px ${color}60` }}
     />
   </div>
-)
+}
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function TutorialPage() {
