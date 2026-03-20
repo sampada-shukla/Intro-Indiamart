@@ -148,7 +148,7 @@ const TutorialVideo = () => {
               textShadow: '0 1px 2px rgba(255, 255, 255, 0.8)',
             }}
           >
-            Getting Started with Intro Indiamart
+            Getting Started with InteGrow
           </p>
 
           <p
@@ -187,7 +187,7 @@ const TutorialVideo = () => {
             gap: '0.5rem',
           }}
         >
-          Welcome to Intro Indiamart Tutorial
+          Welcome to InteGrow Tutorial
         </h3>
 
         <p
