@@ -73,9 +73,9 @@ interface TutorialStep {
   description: string
   icon: React.ComponentType<{ size?: number; color?: string; strokeWidth?: number; style?: React.CSSProperties }>
   iconColor: string
-  image?: string;
-  images?: string[];
-  multiImages?: boolean;
+  image?: string
+  images?: string[]
+  multiImages?: boolean
   details: string[]
 }
 
@@ -100,67 +100,16 @@ const tutorialSections: Array<{ sectionId: number; sectionTitle: string; section
     sectionDescription: "Connect your CRM destination",
     sectionColor: "#F59E0B",
     steps: [
-      { number: 5, title: "CRM Integrations Screen", 
-        description: "Connect external CRM systems for lead synchronization.", 
-        icon: Plug, 
-        iconColor: "#6366F1", 
-        image: integration_1, 
-        details: ["Active CRM panel shows connected CRM or 'No CRM connected yet'","Available CRMs: BITRIX, ZOHO, HUBSPOT, SALESFORCE","Each CRM shows ACTIVE or INACTIVE status","Tap any CRM row to open its configuration"] 
-      },
-      { number: 6, 
-        title: "CRM Connection Configuration", 
-        description: "Configure webhook or API credentials required to establish CRM integration.", 
-        icon: Link, 
-        iconColor: "#7C3AED", 
-        image: connection_url, 
-        details: ["Paste the inbound Webhook URL","Click Test Connection to verify the webhook","Click Save & Activate to make this CRM the active destination","Use Back to Integrations to cancel and return"] 
-      },
-      { number: 7, 
-        title: "Test Connection", 
-        description: "Verify your webhook before activating.", 
-        icon: Zap, 
-        iconColor: "#0EA5E9", 
-        image: test_connection, 
-        details: ["Green toast: 'Connection successful — Credentials are valid'","If failed, verify the webhook URL is correct and publicly accessible","After a successful test, click Save & Activate to go live"] 
-      },
-      { number: 8, 
-        title: "CRM Connected (Bitrix)", 
-        description: "Active CRM shows BITRIX CRM — CONNECTED. Leads now sync automatically.", 
-        icon: CheckCircle, 
-        iconColor: "#059669", 
-        image: crm_connected, 
-        details: ["Green CONNECTED badge confirms the active CRM","All new leads automatically sync to this CRM","Click Revoke to disconnect the current CRM & activate new one","Only one CRM can be active at a time"] },
-      // ── Zoho ──
-      { number: 9, 
-        title: "Connect Zoho CRM", 
-        description: "Authorize InteGrow via Zoho's secure OAuth page — InteGrow then stores your tokens and auto-syncs IndiaMART leads to Zoho.", 
-        icon: Link, 
-        iconColor: "#E5222A", 
-        multiImages: true, 
-        images: [three_crm_updates, zoho_crm], 
-        details: ["Click 'Connect Zoho CRM' in the Integrations section","You'll be redirected to Zoho's secure OAuth authorization page","Log in to your Zoho account and grant InteGrow permission","InteGrow stores your tokens and begins auto-syncing leads to Zoho"] 
-      },
-      // ── HubSpot ──
-      { number: 10, 
-        title: "Connect HubSpot CRM", 
-        description: "Authorize InteGrow via HubSpot's OAuth page — InteGrow then stores your tokens and pushes IndiaMART leads directly into HubSpot.", 
-        icon: Link, 
-        iconColor: "#FF7A59", 
-        multiImages: true, 
-        images: [hubspot_crm, hubspot_connected], 
-        
-        details: ["Click 'Connect HubSpot CRM' in the Integrations section","You'll be redirected to HubSpot's secure OAuth authorization page","Sign in or create a HubSpot account and grant InteGrow access","InteGrow stores your tokens and starts syncing leads to HubSpot"] 
-      },
-      // ── Salesforce ──
-      { number: 11, 
-        title: "Connect Salesforce CRM", 
-        description: "Authorize InteGrow via Salesforce's OAuth page — InteGrow then stores your tokens and syncs IndiaMART leads into Salesforce automatically.", 
-        icon: Link, 
-        iconColor: "#00A1E0", 
-        multiImages: true,
-        images: [salesforce_crm, salesforce_connected], 
-        details: ["Click 'Connect Salesforce CRM' in the Integrations section","You'll be redirected to Salesforce's secure OAuth authorization page","Log in to your Salesforce account and grant InteGrow permission","InteGrow stores your tokens and begins syncing leads to Salesforce"] 
-      },
+      { number: 5, title: "CRM Integrations Screen", description: "Connect external CRM systems for lead synchronization.", icon: Plug, iconColor: "#6366F1", image: integration_1, details: ["Active CRM panel shows connected CRM or 'No CRM connected yet'","Available CRMs: BITRIX, ZOHO, HUBSPOT, SALESFORCE","Each CRM shows ACTIVE or INACTIVE status","Tap any CRM row to open its configuration"] },
+      { number: 6, title: "CRM Connection Configuration", description: "Configure webhook or API credentials required to establish CRM integration.", icon: Link, iconColor: "#7C3AED", image: connection_url, details: ["Paste the inbound Webhook URL","Click Test Connection to verify the webhook","Click Save & Activate to make this CRM the active destination","Use Back to Integrations to cancel and return"] },
+      { number: 7, title: "Test Connection", description: "Verify your webhook before activating.", icon: Zap, iconColor: "#0EA5E9", image: test_connection, details: ["Green toast: 'Connection successful — Credentials are valid'","If failed, verify the webhook URL is correct and publicly accessible","After a successful test, click Save & Activate to go live"] },
+      { number: 8, title: "CRM Connected (Bitrix)", description: "Active CRM shows BITRIX CRM — CONNECTED. Leads now sync automatically.", icon: CheckCircle, iconColor: "#059669", image: crm_connected, details: ["Green CONNECTED badge confirms the active CRM","All new leads automatically sync to this CRM","Click Revoke to disconnect the current CRM & activate new one","Only one CRM can be active at a time"] },
+      // Zoho — multiImages: true
+      { number: 9, title: "Connect Zoho CRM", description: "Authorize InteGrow via Zoho's secure OAuth page — InteGrow then stores your tokens and auto-syncs IndiaMART leads to Zoho.", icon: Link, iconColor: "#E5222A", multiImages: true, images: [three_crm_updates, zoho_crm], details: ["Click 'Connect Zoho CRM' in the Integrations section","You'll be redirected to Zoho's secure OAuth authorization page","Log in to your Zoho account and grant InteGrow permission","InteGrow stores your tokens and begins auto-syncing leads to Zoho"] },
+      // HubSpot — multiImages: true
+      { number: 10, title: "Connect HubSpot CRM", description: "Authorize InteGrow via HubSpot's OAuth page — InteGrow then stores your tokens and pushes IndiaMART leads directly into HubSpot.", icon: Link, iconColor: "#FF7A59", multiImages: true, images: [hubspot_crm, hubspot_connected], details: ["Click 'Connect HubSpot CRM' in the Integrations section","You'll be redirected to HubSpot's secure OAuth authorization page","Sign in or create a HubSpot account and grant InteGrow access","InteGrow stores your tokens and starts syncing leads to HubSpot"] },
+      // Salesforce — multiImages: true
+      { number: 11, title: "Connect Salesforce CRM", description: "Authorize InteGrow via Salesforce's OAuth page — InteGrow then stores your tokens and syncs IndiaMART leads into Salesforce automatically.", icon: Link, iconColor: "#00A1E0", multiImages: true, images: [salesforce_crm, salesforce_connected], details: ["Click 'Connect Salesforce CRM' in the Integrations section","You'll be redirected to Salesforce's secure OAuth authorization page","Log in to your Salesforce account and grant InteGrow permission","InteGrow stores your tokens and begins syncing leads to Salesforce"] },
     ],
   },
   {
@@ -204,15 +153,15 @@ const ALL_STEPS = tutorialSections.flatMap(s => s.steps)
 const TOTAL_STEPS = ALL_STEPS.length
 
 // ─── IMAGE CAROUSEL ───────────────────────────────────────────────────────────
-// Used by StepCard whenever step.images has 2+ items
+// FIX 1: This component is now actually used inside StepCard (was defined but unused before)
 const ImageCarousel = ({
-  images, labels, iconColor, title, isMobile, isTablet, onZoom,
+  images, iconColor, title, isMobile, isTablet, onZoom,
 }: {
-  images: string[]; labels?: string[]; iconColor: string; title: string;
+  images: string[]; iconColor: string; title: string;
   isMobile: boolean; isTablet: boolean; onZoom: (src: string) => void;
 }) => {
   const [activeIdx, setActiveIdx] = useState(0)
-  const [direction, setDirection] = useState(1)   // 1 = forward, -1 = back
+  const [direction, setDirection] = useState(1)
   const [imgLoaded, setImgLoaded] = useState<boolean[]>(images.map(() => false))
 
   const go = (dir: 1 | -1) => {
@@ -224,7 +173,7 @@ const ImageCarousel = ({
 
   return (
     <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.75rem', zIndex: 1 }}>
-      {/* overflow:hidden is the key — clips slide during animation */}
+      {/* overflow:hidden clips the slide during animation */}
       <div style={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: '14px' }}>
         <AnimatePresence mode="popLayout" custom={direction}>
           <motion.div
@@ -258,7 +207,6 @@ const ImageCarousel = ({
                 transition: 'opacity 0.3s ease',
               }}
             />
-            {/* Zoom overlay */}
             <motion.div
               initial={{ opacity: 0 }} whileHover={{ opacity: 1 }}
               onClick={() => onZoom(images[activeIdx])}
@@ -271,7 +219,6 @@ const ImageCarousel = ({
           </motion.div>
         </AnimatePresence>
 
-        {/* Arrows */}
         {images.length > 1 && (
           <>
             <motion.button onClick={() => go(-1)} whileHover={{ scale: 1.12 }} whileTap={{ scale: 0.9 }}
@@ -286,36 +233,29 @@ const ImageCarousel = ({
         )}
       </div>
 
-      {/* Dots + label */}
       {images.length > 1 && (
-        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '6px' }}>
-          {labels && (
-            <AnimatePresence mode="wait">
-              <motion.span key={activeIdx} initial={{ opacity: 0, y: 4 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -4 }} transition={{ duration: 0.2 }}
-                style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.07em', textTransform: 'uppercase', color: iconColor, fontFamily: '"Inter", sans-serif', background: `${iconColor}12`, padding: '3px 10px', borderRadius: '999px', border: `1px solid ${iconColor}30` }}>
-                {labels[activeIdx]}
-              </motion.span>
-            </AnimatePresence>
-          )}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-            {images.map((_, i) => (
-              <motion.button key={i}
-                onClick={() => { setDirection(i > activeIdx ? 1 : -1); setActiveIdx(i) }}
-                animate={{ width: i === activeIdx ? 26 : 8, backgroundColor: i === activeIdx ? iconColor : `${iconColor}40` }}
-                transition={{ duration: 0.22, ease: 'easeInOut' }}
-                style={{ height: '6px', borderRadius: '999px', border: 'none', cursor: 'pointer', padding: 0 }}
-              />
-            ))}
-          </div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+          {images.map((_, i) => (
+            <motion.button key={i}
+              onClick={() => { setDirection(i > activeIdx ? 1 : -1); setActiveIdx(i) }}
+              animate={{ width: i === activeIdx ? 26 : 8, backgroundColor: i === activeIdx ? iconColor : `${iconColor}40` }}
+              transition={{ duration: 0.22, ease: 'easeInOut' }}
+              style={{ height: '6px', borderRadius: '999px', border: 'none', cursor: 'pointer', padding: 0 }}
+            />
+          ))}
         </div>
       )}
+
+      <p style={{ margin: 0, color: `${iconColor}70`, fontSize: '9.5px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: '"Inter", sans-serif', textAlign: 'center' }}>
+        {isMobile ? 'Tap arrows to switch · tap to zoom' : `Image ${activeIdx + 1} of ${images.length} · use arrows or click to zoom`}
+      </p>
     </div>
   )
 }
 
 // ─── ZOOM MODAL ───────────────────────────────────────────────────────────────
-interface ZoomModalProps { show: boolean; onClose: () => void; step: any; isMobile: boolean }
-const ZoomModal = ({ show, onClose, step, isMobile }: ZoomModalProps) => {
+interface ZoomModalProps { show: boolean; onClose: () => void; step: any; isMobile: boolean; zoomSrc?: string }
+const ZoomModal = ({ show, onClose, step, isMobile, zoomSrc }: ZoomModalProps) => {
   useEffect(() => {
     if (!show) return
     const fn = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
@@ -323,85 +263,27 @@ const ZoomModal = ({ show, onClose, step, isMobile }: ZoomModalProps) => {
     document.body.style.overflow = 'hidden'
     return () => { document.removeEventListener('keydown', fn); document.body.style.overflow = '' }
   }, [show, onClose])
-
   if (!step) return null
-
+  const src = zoomSrc || step.image
   return ReactDOM.createPortal(
     <AnimatePresence>
       {show && (
-        <motion.div
-          key="zoom-backdrop"
-          initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          onClick={onClose}
-          style={{
-            position: 'fixed', inset: 0, zIndex: 99999,
-            background: 'rgba(0,0,0,0.78)',
-            backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            cursor: 'zoom-out', padding: '1.5rem',
-          }}
-        >
-          <motion.div
-            key="zoom-panel"
-            initial={{ scale: 0.92, opacity: 0, y: 16 }}
-            animate={{ scale: 1, opacity: 1, y: 0 }}
-            exit={{ scale: 0.92, opacity: 0, y: 16 }}
-            transition={{ type: 'spring', stiffness: 360, damping: 30 }}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              background: 'rgba(10,15,30,0.95)',
-              borderRadius: '24px', padding: '2rem',
-              width: '100%', maxWidth: '1100px',
-              display: 'flex', flexDirection: 'column',
-              alignItems: 'center', gap: '1.25rem',
-              position: 'relative', cursor: 'default',
-              boxShadow: `0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px ${step.iconColor}25`,
-              border: `1px solid ${step.iconColor}20`,
-            }}
-          >
-            <button
-              onClick={onClose}
-              aria-label="Close zoom"
-              style={{
-                position: 'absolute', top: '14px', right: '14px',
-                width: '36px', height: '36px', borderRadius: '50%',
-                background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.2)',
-                color: 'white', cursor: 'pointer',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                transition: 'all 0.18s ease',
-              }}
+        <motion.div key="zoom-backdrop" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.2 }} onClick={onClose}
+          style={{ position: 'fixed', inset: 0, zIndex: 99999, background: 'rgba(0,0,0,0.78)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-out', padding: '1.5rem' }}>
+          <motion.div key="zoom-panel" initial={{ scale: 0.92, opacity: 0, y: 16 }} animate={{ scale: 1, opacity: 1, y: 0 }} exit={{ scale: 0.92, opacity: 0, y: 16 }} transition={{ type: 'spring', stiffness: 360, damping: 30 }} onClick={(e) => e.stopPropagation()}
+            style={{ background: 'rgba(10,15,30,0.95)', borderRadius: '24px', padding: '2rem', width: '100%', maxWidth: '1100px', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.25rem', position: 'relative', cursor: 'default', boxShadow: `0 40px 100px rgba(0,0,0,0.7), 0 0 0 1px ${step.iconColor}25`, border: `1px solid ${step.iconColor}20` }}>
+            <button onClick={onClose} aria-label="Close zoom"
+              style={{ position: 'absolute', top: '14px', right: '14px', width: '36px', height: '36px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', border: '1.5px solid rgba(255,255,255,0.2)', color: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all 0.18s ease' }}
               onMouseEnter={(e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)' }}
-              onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)' }}
-            >
+              onMouseLeave={(e: React.MouseEvent<HTMLButtonElement>) => { e.currentTarget.style.background = 'rgba(255,255,255,0.08)' }}>
               <X size={16} strokeWidth={2.5} />
             </button>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: 10,
-              padding: '5px 14px 5px 5px', borderRadius: 999,
-              background: `${step.iconColor}18`, border: `1px solid ${step.iconColor}35`,
-            }}>
-              <div style={{
-                width: 28, height: 28, borderRadius: '50%',
-                background: step.iconColor, color: '#fff',
-                display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 700,
-              }}>
-                {step.number}
-              </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, padding: '5px 14px 5px 5px', borderRadius: 999, background: `${step.iconColor}18`, border: `1px solid ${step.iconColor}35` }}>
+              <div style={{ width: 28, height: 28, borderRadius: '50%', background: step.iconColor, color: '#fff', display: 'grid', placeItems: 'center', fontSize: 12, fontWeight: 700 }}>{step.number}</div>
               <span style={{ color: '#fff', fontSize: 13, fontWeight: 600 }}>{step.title}</span>
             </div>
-            <img
-              src={step.image} alt={step.title}
-              style={{
-                maxWidth: '100%', maxHeight: '78vh',
-                objectFit: 'contain', borderRadius: '12px',
-                display: 'block', margin: '0 auto',
-                border: `2px solid ${step.iconColor}25`,
-              }}
-            />
-            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.72rem', margin: 0 }}>
-              {isMobile ? 'Tap outside to close' : 'Click outside or press Esc to close'}
-            </p>
+            <img src={src} alt={step.title} style={{ maxWidth: '100%', maxHeight: '78vh', objectFit: 'contain', borderRadius: '12px', display: 'block', margin: '0 auto', border: `2px solid ${step.iconColor}25` }} />
+            <p style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.72rem', margin: 0 }}>{isMobile ? 'Tap outside to close' : 'Click outside or press Esc to close'}</p>
           </motion.div>
         </motion.div>
       )}
@@ -410,50 +292,26 @@ const ZoomModal = ({ show, onClose, step, isMobile }: ZoomModalProps) => {
   )
 }
 
-/* ─── INDEX SIDEBAR ─── */
+// ─── INDEX SIDEBAR ────────────────────────────────────────────────────────────
 interface IndexSidebarProps { activeGlobalIdx: number; onJump: (idx: number) => void; isMobile?: boolean; isOpen: boolean; onToggle: () => void; footerOffset: number }
 const IndexSidebar = ({ activeGlobalIdx, onJump, isOpen, onToggle, footerOffset }: IndexSidebarProps) => {
   const SIDEBAR_W = 272
-
   const [openSections, setOpenSections] = useState<Record<number, boolean>>(() => {
     const map: Record<number, boolean> = {}
     tutorialSections.forEach(s => { map[s.sectionId] = false })
-    const active = tutorialSections.find(s =>
-      s.steps.some((st: TutorialStep) => ALL_STEPS.findIndex((x: TutorialStep) => x.number === st.number) === activeGlobalIdx)
-    )
+    const active = tutorialSections.find(s => s.steps.some((st: TutorialStep) => ALL_STEPS.findIndex((x: TutorialStep) => x.number === st.number) === activeGlobalIdx))
     if (active) map[active.sectionId] = true
     return map
   })
-
   const toggleSection = (id: number) => setOpenSections(prev => ({ ...prev, [id]: !prev[id] }))
-
   return (
     <>
       {isOpen && (
-        <motion.div
-          animate={{ x: isOpen ? 0 : -SIDEBAR_W }}
-          initial={false}
-          transition={{ type: 'spring', stiffness: 340, damping: 34 }}
-          style={{
-            position: 'fixed', left: 0, top: 0, bottom: footerOffset,
-            width: `${SIDEBAR_W}px`, zIndex: 500,
-            background: '#ffffff', borderRight: '1px solid #E8F4F8',
-            boxShadow: '6px 0 32px rgba(6,182,212,0.07), 2px 0 8px rgba(0,0,0,0.04)',
-            display: 'flex', flexDirection: 'column', overflow: 'hidden',
-          }}
-        >
-          <div style={{
-            background: `linear-gradient(135deg, ${BRAND.primary}08, ${BRAND.primaryLt}05)`,
-            padding: '1rem 1rem 0.85rem 1.1rem', borderBottom: '1px solid #EEF7FB',
-            flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between',
-          }}>
+        <motion.div animate={{ x: isOpen ? 0 : -SIDEBAR_W }} initial={false} transition={{ type: 'spring', stiffness: 340, damping: 34 }}
+          style={{ position: 'fixed', left: 0, top: 0, bottom: footerOffset, width: `${SIDEBAR_W}px`, zIndex: 500, background: '#ffffff', borderRight: '1px solid #E8F4F8', boxShadow: '6px 0 32px rgba(6,182,212,0.07), 2px 0 8px rgba(0,0,0,0.04)', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+          <div style={{ background: `linear-gradient(135deg, ${BRAND.primary}08, ${BRAND.primaryLt}05)`, padding: '1rem 1rem 0.85rem 1.1rem', borderBottom: '1px solid #EEF7FB', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
-              <div style={{
-                width: '28px', height: '28px', borderRadius: '8px',
-                background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.primaryDk})`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: `0 3px 10px ${BRAND.primary}40`, flexShrink: 0,
-              }}>
+              <div style={{ width: '28px', height: '28px', borderRadius: '8px', background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.primaryDk})`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 3px 10px ${BRAND.primary}40`, flexShrink: 0 }}>
                 <List size={13} color="white" strokeWidth={2.5} />
               </div>
               <div>
@@ -461,126 +319,58 @@ const IndexSidebar = ({ activeGlobalIdx, onJump, isOpen, onToggle, footerOffset 
                 <div style={{ fontSize: '10px', color: BRAND.muted, marginTop: '2px', fontFamily: '"Inter", sans-serif' }}>{tutorialSections.length} sections · {ALL_STEPS.length} steps</div>
               </div>
             </div>
-            <motion.button
-              onClick={onToggle}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.93 }}
-              style={{ width: '28px', height: '28px', borderRadius: '7px', background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}
-            >
+            <motion.button onClick={onToggle} whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.93 }} style={{ width: '28px', height: '28px', borderRadius: '7px', background: 'rgba(0,0,0,0.03)', border: '1px solid rgba(0,0,0,0.07)', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', flexShrink: 0 }}>
               <ChevronLeft size={14} color={BRAND.muted} strokeWidth={2.5} />
             </motion.button>
           </div>
-
           <div style={{ padding: '0.7rem 1.1rem 0.65rem', borderBottom: '1px solid #F0F7FA', flexShrink: 0, background: '#FAFCFE' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '6px' }}>
               <span style={{ fontSize: '10px', fontWeight: 600, color: BRAND.muted, fontFamily: '"Inter", sans-serif', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Progress</span>
               <span style={{ fontSize: '10px', fontWeight: 700, color: BRAND.primary, fontFamily: '"Inter", sans-serif', background: `${BRAND.primary}12`, padding: '1px 7px', borderRadius: '999px', border: `1px solid ${BRAND.primary}25` }}>{activeGlobalIdx + 1} / {ALL_STEPS.length}</span>
             </div>
             <div style={{ height: '5px', background: '#EEF2F7', borderRadius: '5px', overflow: 'hidden' }}>
-              <motion.div
-                animate={{ width: `${((activeGlobalIdx + 1) / ALL_STEPS.length) * 100}%` }}
-                transition={{ type: 'spring', stiffness: 200, damping: 28 }}
-                style={{ height: '100%', background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.primaryLt})`, borderRadius: '5px', boxShadow: `0 0 6px ${BRAND.primary}50` }}
-              />
+              <motion.div animate={{ width: `${((activeGlobalIdx + 1) / ALL_STEPS.length) * 100}%` }} transition={{ type: 'spring', stiffness: 200, damping: 28 }} style={{ height: '100%', background: `linear-gradient(to right, ${BRAND.primary}, ${BRAND.primaryLt})`, borderRadius: '5px', boxShadow: `0 0 6px ${BRAND.primary}50` }} />
             </div>
           </div>
-
           <div style={{ flex: 1, overflowY: 'auto', overflowX: 'hidden', scrollbarWidth: 'none', msOverflowStyle: 'none', padding: '0.5rem 0 1rem' }}>
             <style>{`.sb-sec-btn:hover{background:rgba(6,182,212,0.04)!important}.sb-step-btn:hover{background:rgba(6,182,212,0.05)!important}`}</style>
             {tutorialSections.map((section, secIdx) => {
-              const secFirstIdx = ALL_STEPS.findIndex((s: any)=> s.number === section.steps[0].number)
+              const secFirstIdx = ALL_STEPS.findIndex((s: any) => s.number === section.steps[0].number)
               const isSectionActive = activeGlobalIdx >= secFirstIdx && activeGlobalIdx < secFirstIdx + section.steps.length
               const isExpanded = !!openSections[section.sectionId]
               const completedInSection = section.steps.filter((st: any) => ALL_STEPS.findIndex(x => x.number === st.number) < activeGlobalIdx).length
               const sectionColor = (section as any).sectionColor || BRAND.primary
               return (
                 <div key={section.sectionId} style={{ marginBottom: '2px' }}>
-                  <button
-                    className="sb-sec-btn"
-                    onClick={() => toggleSection(section.sectionId)}
-                    style={{
-                      width: '100%', display: 'flex', alignItems: 'center', gap: '0.6rem',
-                      padding: '0.5rem 0.9rem 0.5rem 0.8rem',
-                      background: isSectionActive ? `${sectionColor}07` : 'transparent',
-                      borderLeft: `3px solid ${isSectionActive ? sectionColor : 'transparent'}`,
-                      border: 'none', borderLeftStyle: 'solid', cursor: 'pointer', textAlign: 'left',
-                      transition: 'background 0.18s ease, border-color 0.18s ease',
-                    }}
-                  >
-                    <div style={{
-                      width: '20px', height: '20px', borderRadius: '6px', flexShrink: 0,
-                      background: isSectionActive ? `linear-gradient(135deg, ${sectionColor}, ${sectionColor}bb)` : '#EEF2F7',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      boxShadow: isSectionActive ? `0 2px 6px ${sectionColor}40` : 'none',
-                      transition: 'all 0.22s ease',
-                    }}>
+                  <button className="sb-sec-btn" onClick={() => toggleSection(section.sectionId)}
+                    style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '0.6rem', padding: '0.5rem 0.9rem 0.5rem 0.8rem', background: isSectionActive ? `${sectionColor}07` : 'transparent', borderLeft: `3px solid ${isSectionActive ? sectionColor : 'transparent'}`, border: 'none', borderLeftStyle: 'solid', cursor: 'pointer', textAlign: 'left', transition: 'background 0.18s ease, border-color 0.18s ease' }}>
+                    <div style={{ width: '20px', height: '20px', borderRadius: '6px', flexShrink: 0, background: isSectionActive ? `linear-gradient(135deg, ${sectionColor}, ${sectionColor}bb)` : '#EEF2F7', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: isSectionActive ? `0 2px 6px ${sectionColor}40` : 'none', transition: 'all 0.22s ease' }}>
                       <span style={{ fontSize: '8px', fontWeight: 800, color: isSectionActive ? 'white' : BRAND.muted, fontFamily: '"Inter", sans-serif' }}>{String(secIdx + 1).padStart(2, '0')}</span>
                     </div>
                     <span style={{ flex: 1, fontSize: '10.5px', fontWeight: 700, color: isSectionActive ? sectionColor : '#64748B', fontFamily: '"Inter", sans-serif', lineHeight: 1.25, letterSpacing: '0.01em', transition: 'color 0.18s ease' }}>{section.sectionTitle}</span>
-                    {completedInSection > 0 && (
-                      <span style={{ fontSize: '8.5px', fontWeight: 700, color: sectionColor, background: `${sectionColor}12`, padding: '1px 5px', borderRadius: '999px', border: `1px solid ${sectionColor}25`, flexShrink: 0, fontFamily: '"Inter", sans-serif' }}>{completedInSection}/{section.steps.length}</span>
-                    )}
+                    {completedInSection > 0 && <span style={{ fontSize: '8.5px', fontWeight: 700, color: sectionColor, background: `${sectionColor}12`, padding: '1px 5px', borderRadius: '999px', border: `1px solid ${sectionColor}25`, flexShrink: 0, fontFamily: '"Inter", sans-serif' }}>{completedInSection}/{section.steps.length}</span>}
                     <motion.span animate={{ rotate: isExpanded ? 90 : 0 }} transition={{ duration: 0.18 }} style={{ display: 'flex', flexShrink: 0 }}>
                       <ChevronRight size={11} color={isSectionActive ? sectionColor : '#94A3B8'} strokeWidth={2.5} />
                     </motion.span>
                   </button>
-
                   <AnimatePresence initial={false}>
                     {isExpanded && (
-                      <motion.div
-                        key="sec-steps"
-                        initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.2, ease: 'easeInOut' }}
-                        style={{ overflow: 'hidden' }}
-                      >
+                      <motion.div key="sec-steps" initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.2, ease: 'easeInOut' }} style={{ overflow: 'hidden' }}>
                         <div style={{ margin: '2px 0.6rem 4px 1.7rem', borderLeft: `1.5px solid ${sectionColor}25` }}>
                           {section.steps.map((step, stepLocalIdx) => {
-                            const stepIdx = ALL_STEPS.findIndex((s: any)=> s.number === step.number)
+                            const stepIdx = ALL_STEPS.findIndex((s: any) => s.number === step.number)
                             const isActive = stepIdx === activeGlobalIdx
                             const isPast = stepIdx < activeGlobalIdx
                             const isLast = stepLocalIdx === section.steps.length - 1
                             return (
-                              <motion.button
-                                key={step.number}
-                                className="sb-step-btn"
-                                onClick={() => onJump(stepIdx)}
-                                whileTap={{ scale: 0.98 }}
-                                style={{
-                                  width: '100%', display: 'flex', alignItems: 'center', gap: '0.55rem',
-                                  padding: '0.38rem 0.6rem 0.38rem 0.85rem',
-                                  background: isActive ? `linear-gradient(90deg, ${step.iconColor}10, transparent)` : 'transparent',
-                                  border: 'none', cursor: 'pointer', textAlign: 'left',
-                                  borderRadius: '0 8px 8px 0', position: 'relative',
-                                  transition: 'background 0.15s ease', marginBottom: isLast ? 0 : '1px',
-                                }}
-                              >
-                                {isActive && (
-                                  <div style={{ position: 'absolute', left: '-1px', top: '18%', bottom: '18%', width: '2.5px', borderRadius: '0 2px 2px 0', background: step.iconColor, boxShadow: `0 0 5px ${step.iconColor}70` }} />
-                                )}
-                                <div style={{
-                                  width: '22px', height: '22px', borderRadius: '50%', flexShrink: 0, zIndex: 1,
-                                  background: isActive ? step.iconColor : isPast ? `${step.iconColor}15` : '#F1F5F9',
-                                  border: isActive ? `2px solid ${step.iconColor}` : isPast ? `1.5px solid ${step.iconColor}50` : '1.5px solid #DDE4EE',
-                                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                  boxShadow: isActive ? `0 2px 8px ${step.iconColor}45` : 'none', transition: 'all 0.2s ease',
-                                }}>
-                                  {isPast ? (
-                                    <CheckCircle size={11} color={step.iconColor} strokeWidth={2.5} />
-                                  ) : (
-                                    <span style={{ fontSize: '8px', fontWeight: 800, color: isActive ? 'white' : '#94A3B8', fontFamily: '"Inter", sans-serif' }}>{step.number}</span>
-                                  )}
+                              <motion.button key={step.number} className="sb-step-btn" onClick={() => onJump(stepIdx)} whileTap={{ scale: 0.98 }}
+                                style={{ width: '100%', display: 'flex', alignItems: 'center', gap: '0.55rem', padding: '0.38rem 0.6rem 0.38rem 0.85rem', background: isActive ? `linear-gradient(90deg, ${step.iconColor}10, transparent)` : 'transparent', border: 'none', cursor: 'pointer', textAlign: 'left', borderRadius: '0 8px 8px 0', position: 'relative', transition: 'background 0.15s ease', marginBottom: isLast ? 0 : '1px' }}>
+                                {isActive && <div style={{ position: 'absolute', left: '-1px', top: '18%', bottom: '18%', width: '2.5px', borderRadius: '0 2px 2px 0', background: step.iconColor, boxShadow: `0 0 5px ${step.iconColor}70` }} />}
+                                <div style={{ width: '22px', height: '22px', borderRadius: '50%', flexShrink: 0, zIndex: 1, background: isActive ? step.iconColor : isPast ? `${step.iconColor}15` : '#F1F5F9', border: isActive ? `2px solid ${step.iconColor}` : isPast ? `1.5px solid ${step.iconColor}50` : '1.5px solid #DDE4EE', display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: isActive ? `0 2px 8px ${step.iconColor}45` : 'none', transition: 'all 0.2s ease' }}>
+                                  {isPast ? <CheckCircle size={11} color={step.iconColor} strokeWidth={2.5} /> : <span style={{ fontSize: '8px', fontWeight: 800, color: isActive ? 'white' : '#94A3B8', fontFamily: '"Inter", sans-serif' }}>{step.number}</span>}
                                 </div>
-                                <span style={{
-                                  flex: 1, fontSize: '11.5px',
-                                  fontWeight: isActive ? 650 : isPast ? 500 : 450,
-                                  color: isActive ? BRAND.dark : isPast ? '#4B5563' : '#94A3B8',
-                                  lineHeight: 1.3, fontFamily: '"Inter", sans-serif',
-                                  transition: 'color 0.15s ease', whiteSpace: 'nowrap',
-                                  overflow: 'hidden', textOverflow: 'ellipsis',
-                                }}>{step.title}</span>
-                                {isActive && (
-                                  <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: step.iconColor, flexShrink: 0, boxShadow: `0 0 4px ${step.iconColor}80` }} />
-                                )}
+                                <span style={{ flex: 1, fontSize: '11.5px', fontWeight: isActive ? 650 : isPast ? 500 : 450, color: isActive ? BRAND.dark : isPast ? '#4B5563' : '#94A3B8', lineHeight: 1.3, fontFamily: '"Inter", sans-serif', transition: 'color 0.15s ease', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{step.title}</span>
+                                {isActive && <div style={{ width: '5px', height: '5px', borderRadius: '50%', background: step.iconColor, flexShrink: 0, boxShadow: `0 0 4px ${step.iconColor}80` }} />}
                               </motion.button>
                             )
                           })}
@@ -598,298 +388,126 @@ const IndexSidebar = ({ activeGlobalIdx, onJump, isOpen, onToggle, footerOffset 
   )
 }
 
-/* ─── STEP CARD ─── */
+// ─── STEP CARD ────────────────────────────────────────────────────────────────
 interface StepCardProps { step: any; isMobile: boolean; isTablet: boolean; globalIdx: number; canPrev: boolean; canNext: boolean; onPrev: () => void; onNext: () => void; setGlobalIdx: (i: number) => void; setIsUserNavigation: (val: boolean) => void }
 const StepCard = ({ step, isMobile, isTablet, globalIdx, canPrev, canNext, onPrev, onNext, setGlobalIdx, setIsUserNavigation }: StepCardProps) => {
   const [showZoom, setShowZoom] = useState(false)
+  const [zoomSrc, setZoomSrc] = useState<string | undefined>(undefined)
   const [imgLoaded, setImgLoaded] = useState(false)
-  const [carouselIdx, setCarouselIdx] = useState(0)
-  const [carouselDir, setCarouselDir] = useState(1)
   const Icon = step.icon
+
+  // FIX 1: detect carousel using multiImages flag (matches your data)
   const isCarousel = !!step.multiImages && Array.isArray(step.images) && step.images.length > 1
   const carouselImages: string[] = isCarousel ? step.images : []
-  const activeImage: string = isCarousel ? carouselImages[carouselIdx] : step.image
 
-  // Reset carousel index when step changes
-  useEffect(() => { setCarouselIdx(0) }, [step.number])
+  useEffect(() => { setImgLoaded(false) }, [step.number])
 
-  // Auto-advance every 2.5s
-  useEffect(() => {
-    if (!isCarousel) return
-    const timer = setInterval(() => {
-      setCarouselDir(1)
-      setCarouselIdx(i => (i + 1) % carouselImages.length)
-    }, 2500)
-    return () => clearInterval(timer)
-  }, [isCarousel, carouselImages.length])
-
-  const goCarousel = (dir: number) => {
-    setCarouselDir(dir)
-    setCarouselIdx(i => (i + dir + carouselImages.length) % carouselImages.length)
-  }
+  const openZoom = (src: string) => { setZoomSrc(src); setShowZoom(true) }
 
   return (
     <>
-      <motion.div
-        layout
-        initial={{ opacity: 0, y: 24 }}
-        animate={{ opacity: 1, y: 0 }}
-        exit={{ opacity: 0, y: -16 }}
-        transition={{ type: 'spring', stiffness: 280, damping: 28 }}
-        style={{
-          width: '100%',
-          borderRadius: isMobile ? '20px' : '28px',
-          overflow: 'hidden',
-          background: 'white',
-          border: `1.5px solid ${step.iconColor}22`,
-          boxShadow: `0 16px 64px ${step.iconColor}14, 0 4px 16px rgba(0,0,0,0.06)`,
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        {/* Top accent bar */}
+      <motion.div layout initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -16 }} transition={{ type: 'spring', stiffness: 280, damping: 28 }}
+        style={{ width: '100%', borderRadius: isMobile ? '20px' : '28px', overflow: 'hidden', background: 'white', border: `1.5px solid ${step.iconColor}22`, boxShadow: `0 16px 64px ${step.iconColor}14, 0 4px 16px rgba(0,0,0,0.06)`, display: 'flex', flexDirection: 'column' }}>
         <div style={{ height: '5px', background: `linear-gradient(90deg, ${step.iconColor}, ${step.iconColor}60, transparent)`, flexShrink: 0 }} />
-      {/* Mobile prev/next */}
-      {isMobile && (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '10px 14px', borderBottom: `1px solid ${step.iconColor}18`, background: 'rgba(248,250, 252,0.8)', flexShrink: 0}}>
-          <motion.button onClick={onPrev} disabled={!canPrev} whileHover={canPrev ? { scale: 1.04}: {}} whileTap={canPrev ? {scale: 0.97}: {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: '0.5rem 0.8rem', background: canPrev ? `linear-gradient(135deg, ${BRAND.mid}, #334155)` : 'rgba(0,0,0,0.04)', color: canPrev ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px',fontSize: '12px', fontWeight: 600, cursor: canPrev ? 'pointer' : 'not-allowed', fontFamily: '"Inter",sans-serif', boxShadow: canPrev ? '0 4px 14px rgba(15,23,42,0.22)' : 'none', flexShrink: 0 }}>
-            <ChevronLeft size={15} strokeWidth={2.5} />
-            </motion.button> 
-            <div style = {{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px',overflow: 'hidden' }}>
+
+        {/* Mobile prev/next */}
+        {isMobile && (
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', padding: '10px 14px', borderBottom: `1px solid ${step.iconColor}18`, background: 'rgba(248,250,252,0.8)', flexShrink: 0 }}>
+            <motion.button onClick={onPrev} disabled={!canPrev} whileHover={canPrev ? { scale: 1.04 } : {}} whileTap={canPrev ? { scale: 0.97 } : {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: '0.5rem 0.8rem', background: canPrev ? `linear-gradient(135deg, ${BRAND.mid}, #334155)` : 'rgba(0,0,0,0.04)', color: canPrev ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canPrev ? 'pointer' : 'not-allowed', fontFamily: '"Inter",sans-serif', boxShadow: canPrev ? '0 4px 14px rgba(15,23,42,0.22)' : 'none', flexShrink: 0 }}>
+              <ChevronLeft size={15} strokeWidth={2.5} />
+            </motion.button>
+            <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', overflow: 'hidden' }}>
               {ALL_STEPS.map((_: TutorialStep, i: number) => {
-                const distance = Math.abs(i - globalIdx)
-                if (distance > 4) return null
-                const isActive = i === globalIdx
-                const isNear = distance === 1
-                return (
-                  <motion.button key={i} onClick={() => { setIsUserNavigation(true); setGlobalIdx(i) }} animate={{ width: isActive ? 30 : isNear ? 14 : 7, height: 6, opacity: isActive ? 1 : isNear ? 0.6 : 0.28, backgroundColor: isActive ? step.iconColor : isNear ? `${step.iconColor}90` : '#cbd5e1' }} transition={{ duration: 0.25, ease: 'easeInOut' }} style={{ borderRadius: 999, border: 'none', cursor: 'pointer', padding: 0 }} />
-              )
+                const distance = Math.abs(i - globalIdx); if (distance > 4) return null
+                const isActive = i === globalIdx; const isNear = distance === 1
+                return <motion.button key={i} onClick={() => { setIsUserNavigation(true); setGlobalIdx(i) }} animate={{ width: isActive ? 30 : isNear ? 14 : 7, height: 6, opacity: isActive ? 1 : isNear ? 0.6 : 0.28, backgroundColor: isActive ? step.iconColor : isNear ? `${step.iconColor}90` : '#cbd5e1' }} transition={{ duration: 0.25, ease: 'easeInOut' }} style={{ borderRadius: 999, border: 'none', cursor: 'pointer', padding: 0 }} />
               })}
-             </div>
-                <motion.button onClick={onNext} disabled={!canNext} whileHover={canNext ? {scale: 0.97 }: {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: '0.5rem 0.8rem', background: canNext ? `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)`: 'rgba(0,0,0,0.04)', color: canNext ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canNext ? 'pointer': 'not-allowed', fontFamily: '"Inter",sans-serif', boxShadow: canNext ? `0 4px 18px ${step.iconColor}45`:'none', flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
-                  {canNext && (<motion.div animate={{ x: ['-100%', '120%'] }} transition={{ duration: 2.2, repeat: Infinity, ease: 'linear'}} style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.22), transparent)', pointerEvents: 'none' }}  />)}
-                  <ChevronRight size={15} strokeWidth={2.5} style={{ position: 'relative', zIndex: 1}} />
-                  </motion.button>  
             </div>
-      )}
-      
-        {/* Main body */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-          flex: 1,
-          minHeight: isMobile ? 'auto' : '540px',
-        }}>
+            <motion.button onClick={onNext} disabled={!canNext} whileHover={canNext ? { scale: 0.97 } : {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: '0.5rem 0.8rem', background: canNext ? `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)` : 'rgba(0,0,0,0.04)', color: canNext ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canNext ? 'pointer' : 'not-allowed', fontFamily: '"Inter",sans-serif', boxShadow: canNext ? `0 4px 18px ${step.iconColor}45` : 'none', flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
+              {canNext && <motion.div animate={{ x: ['-100%', '120%'] }} transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)', pointerEvents: 'none' }} />}
+              <ChevronRight size={15} strokeWidth={2.5} style={{ position: 'relative', zIndex: 1 }} />
+            </motion.button>
+          </div>
+        )}
+
+        <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', flex: 1, minHeight: isMobile ? 'auto' : '540px' }}>
 
           {/* LEFT: IMAGE PANEL */}
-          <div style={{
-            position: 'relative',
-            background: `linear-gradient(145deg, ${step.iconColor}0D 0%, ${step.iconColor}05 60%, #f8fafc 100%)`,
-            borderRight: isMobile ? 'none' : `1px solid ${step.iconColor}14`,
-            borderBottom: isMobile ? `1px solid ${step.iconColor}14` : 'none',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
-            padding: isMobile ? '2.5rem 1.5rem 1.5rem' : '2rem 2.5rem',
-            overflow: 'hidden',
-            minHeight: isMobile ? '240px' : 'auto',
-          }}>
+          <div style={{ position: 'relative', background: `linear-gradient(145deg, ${step.iconColor}0D 0%, ${step.iconColor}05 60%, #f8fafc 100%)`, borderRight: isMobile ? 'none' : `1px solid ${step.iconColor}14`, borderBottom: isMobile ? `1px solid ${step.iconColor}14` : 'none', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: isMobile ? '2.5rem 1.5rem 1.5rem' : '2rem 2.5rem', overflow: 'hidden', minHeight: isMobile ? '240px' : 'auto' }}>
             <div style={{ position: 'absolute', top: '-50px', right: '-50px', width: '220px', height: '220px', borderRadius: '50%', background: `radial-gradient(circle, ${step.iconColor}18, transparent 70%)`, pointerEvents: 'none' }} />
             <div style={{ position: 'absolute', bottom: '-40px', left: '-40px', width: '180px', height: '180px', borderRadius: '50%', background: `radial-gradient(circle, ${step.iconColor}0E, transparent 70%)`, pointerEvents: 'none' }} />
 
             {/* Step badge */}
-            <div style={{
-              position: 'absolute', top: '1.1rem', left: '1.1rem',
-              display: 'flex', alignItems: 'center', gap: '0.45rem',
-              padding: '4px 11px 4px 5px',
-              background: 'rgba(255,255,255,0.88)',
-              border: `1.5px solid ${step.iconColor}35`,
-              borderRadius: '999px', zIndex: 2,
-              backdropFilter: 'blur(8px)',
-              boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-            }}>
-              <div style={{
-                width: '22px', height: '22px', borderRadius: '50%',
-                background: `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '9px', fontWeight: 800, color: 'white',
-                fontFamily: '"Inter", sans-serif',
-                boxShadow: `0 2px 8px ${step.iconColor}40`, flexShrink: 0,
-              }}>
-                {step.number}
-              </div>
-              <span style={{ fontSize: '9.5px', fontWeight: 700, color: step.iconColor, fontFamily: '"Inter", sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-                Step {step.number} / {TOTAL_STEPS}
-              </span>
+            <div style={{ position: 'absolute', top: '1.1rem', left: '1.1rem', display: 'flex', alignItems: 'center', gap: '0.45rem', padding: '4px 11px 4px 5px', background: 'rgba(255,255,255,0.88)', border: `1.5px solid ${step.iconColor}35`, borderRadius: '999px', zIndex: 2, backdropFilter: 'blur(8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.06)' }}>
+              <div style={{ width: '22px', height: '22px', borderRadius: '50%', background: `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '9px', fontWeight: 800, color: 'white', fontFamily: '"Inter", sans-serif', boxShadow: `0 2px 8px ${step.iconColor}40`, flexShrink: 0 }}>{step.number}</div>
+              <span style={{ fontSize: '9.5px', fontWeight: 700, color: step.iconColor, fontFamily: '"Inter", sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>Step {step.number} / {TOTAL_STEPS}</span>
             </div>
 
-            {/* Zoom button */}
-            <motion.button
-              onClick={() => setShowZoom(true)}
-              whileHover={{ scale: 1.08 }}
-              whileTap={{ scale: 0.94 }}
-              style={{
-                position: 'absolute', top: '1.1rem', right: '1.1rem',
-                display: 'flex', alignItems: 'center', gap: '5px',
-                padding: '5px 11px 5px 8px',
-                background: 'rgba(255,255,255,0.88)',
-                border: `1.5px solid ${step.iconColor}30`,
-                borderRadius: '999px', cursor: 'pointer', zIndex: 2,
-                backdropFilter: 'blur(8px)',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.07)',
-                transition: 'all 0.18s ease',
-              }}
-            >
-              <ZoomIn size={12} color={step.iconColor} strokeWidth={2.5} />
-              {!isMobile && (
-                <span style={{ fontSize: '9.5px', fontWeight: 700, color: step.iconColor, fontFamily: '"Inter", sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Zoom</span>
-              )}
-            </motion.button>
+            {/* Top-right: carousel badge or zoom button */}
+            {isCarousel ? (
+              <div style={{ position: 'absolute', top: '1.1rem', right: '1.1rem', display: 'flex', alignItems: 'center', gap: '5px', padding: '4px 10px', background: `${step.iconColor}18`, border: `1.5px solid ${step.iconColor}35`, borderRadius: '999px', zIndex: 2, backdropFilter: 'blur(8px)' }}>
+                <div style={{ width: '6px', height: '6px', borderRadius: '50%', background: step.iconColor }} />
+                <span style={{ fontSize: '9px', fontWeight: 700, color: step.iconColor, fontFamily: '"Inter", sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>{carouselImages.length} screenshots</span>
+              </div>
+            ) : (
+              <motion.button onClick={() => openZoom(step.image || '')} whileHover={{ scale: 1.08 }} whileTap={{ scale: 0.94 }}
+                style={{ position: 'absolute', top: '1.1rem', right: '1.1rem', display: 'flex', alignItems: 'center', gap: '5px', padding: '5px 11px 5px 8px', background: 'rgba(255,255,255,0.88)', border: `1.5px solid ${step.iconColor}30`, borderRadius: '999px', cursor: 'pointer', zIndex: 2, backdropFilter: 'blur(8px)', boxShadow: '0 2px 8px rgba(0,0,0,0.07)', transition: 'all 0.18s ease' }}>
+                <ZoomIn size={12} color={step.iconColor} strokeWidth={2.5} />
+                {!isMobile && <span style={{ fontSize: '9.5px', fontWeight: 700, color: step.iconColor, fontFamily: '"Inter", sans-serif', letterSpacing: '0.07em', textTransform: 'uppercase' }}>Zoom</span>}
+              </motion.button>
+            )}
 
-            {/* ── IMAGE / CAROUSEL ── */}
-            <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 1, gap: '0.75rem' }}>
-
-              {/* Sliding image */}
-              <div style={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: '14px' }}>
-                <AnimatePresence mode="wait" initial={false}>
-                  <motion.div
-                    key={isCarousel ? carouselIdx : 'single'}
-                    initial={{ x: isCarousel ? carouselDir * 60 : 0, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: isCarousel ? carouselDir * -60 : 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: 'easeInOut' }}
-                    style={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                  >
-                    <img
-                      src={activeImage}
-                      alt={step.title}
-                      onLoad={() => setImgLoaded(true)}
-                      style={{
-                        maxWidth: '100%',
-                        maxHeight: isMobile ? '240px' : isTablet ? '380px' : '460px',
-                        width: 'auto', height: 'auto',
-                        objectFit: 'contain',
-                        borderRadius: '14px',
-                        display: 'block', margin: '0 auto',
-                        border: `1.5px solid rgba(0,0,0,0.06)`,
-                        boxShadow: `0 8px 32px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04)`,
-                        opacity: imgLoaded ? 1 : 0,
-                        transition: 'opacity 0.35s ease',
-                      }}
-                    />
+            {/* FIX 1: Use ImageCarousel component for multi-image steps, single img for others */}
+            {isCarousel ? (
+              <ImageCarousel
+                images={carouselImages}
+                iconColor={step.iconColor}
+                title={step.title}
+                isMobile={isMobile}
+                isTablet={isTablet}
+                onZoom={openZoom}
+              />
+            ) : (
+              <div style={{ position: 'relative', width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', zIndex: 1, gap: '0.75rem' }}>
+                <div style={{ position: 'relative', width: '100%', overflow: 'hidden', borderRadius: '14px' }}>
+                  <img
+                    src={step.image}
+                    alt={step.title}
+                    onLoad={() => setImgLoaded(true)}
+                    style={{ maxWidth: '100%', maxHeight: isMobile ? '240px' : isTablet ? '380px' : '460px', width: 'auto', height: 'auto', objectFit: 'contain', borderRadius: '14px', display: 'block', margin: '0 auto', border: '1.5px solid rgba(0,0,0,0.06)', boxShadow: '0 8px 32px rgba(0,0,0,0.07), 0 2px 8px rgba(0,0,0,0.04)', opacity: imgLoaded ? 1 : 0, transition: 'opacity 0.35s ease' }}
+                  />
+                  <motion.div initial={{ opacity: 0 }} whileHover={{ opacity: 1 }} onClick={() => openZoom(step.image || '')}
+                    style={{ position: 'absolute', inset: 0, borderRadius: '14px', background: `linear-gradient(135deg, ${step.iconColor}28, rgba(0,0,0,0.45))`, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'zoom-in', backdropFilter: 'blur(3px)', WebkitBackdropFilter: 'blur(3px)' }}>
+                    <div style={{ background: 'rgba(0,0,0,0.62)', borderRadius: '50%', padding: '14px', border: `2.5px solid ${step.iconColor}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 0 24px rgba(0,0,0,0.4)' }}>
+                      <ZoomIn size={26} color={step.iconColor} strokeWidth={2} />
+                    </div>
                   </motion.div>
-                </AnimatePresence>
-
-                {/* Zoom overlay */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: 1 }}
-                  onClick={() => setShowZoom(true)}
-                  style={{
-                    position: 'absolute', inset: 0,
-                    borderRadius: '14px',
-                    background: `linear-gradient(135deg, ${step.iconColor}28, rgba(0,0,0,0.45))`,
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    cursor: 'zoom-in',
-                    backdropFilter: 'blur(3px)', WebkitBackdropFilter: 'blur(3px)',
-                  }}
-                >
-                  <div style={{ background: 'rgba(0,0,0,0.62)', borderRadius: '50%', padding: '14px', border: `2.5px solid ${step.iconColor}`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 0 24px rgba(0,0,0,0.4)` }}>
-                    <ZoomIn size={26} color={step.iconColor} strokeWidth={2} />
-                  </div>
-                </motion.div>
-
-                {/* Carousel prev/next arrows */}
-                {isCarousel && (
-                  <>
-                    <motion.button
-                      onClick={() => goCarousel(-1)}
-                      whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.93 }}
-                      style={{ position: 'absolute', left: '8px', top: '50%', transform: 'translateY(-50%)', width: '30px', height: '30px', borderRadius: '50%', background: 'rgba(255,255,255,0.88)', border: `1.5px solid ${step.iconColor}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 3, boxShadow: '0 2px 8px rgba(0,0,0,0.12)', backdropFilter: 'blur(6px)' }}
-                    >
-                      <ChevronLeft size={15} color={step.iconColor} strokeWidth={2.5} />
-                    </motion.button>
-                    <motion.button
-                      onClick={() => goCarousel(1)}
-                      whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.93 }}
-                      style={{ position: 'absolute', right: '8px', top: '50%', transform: 'translateY(-50%)', width: '30px', height: '30px', borderRadius: '50%', background: 'rgba(255,255,255,0.88)', border: `1.5px solid ${step.iconColor}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', zIndex: 3, boxShadow: '0 2px 8px rgba(0,0,0,0.12)', backdropFilter: 'blur(6px)' }}
-                    >
-                      <ChevronRight size={15} color={step.iconColor} strokeWidth={2.5} />
-                    </motion.button>
-                  </>
-                )}
-              </div>
-
-              {/* Carousel dots */}
-              {isCarousel && (
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                  {carouselImages.map((_, i) => (
-                    <motion.button
-                      key={i}
-                      onClick={() => { setCarouselDir(i > carouselIdx ? 1 : -1); setCarouselIdx(i) }}
-                      animate={{ width: i === carouselIdx ? 22 : 7, backgroundColor: i === carouselIdx ? step.iconColor : `${step.iconColor}45` }}
-                      transition={{ duration: 0.25 }}
-                      style={{ height: 6, borderRadius: 999, border: 'none', cursor: 'pointer', padding: 0 }}
-                    />
-                  ))}
                 </div>
-              )}
-
-              {/* Caption */}
-              <p style={{ margin: 0, color: `${step.iconColor}70`, fontSize: '9.5px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: '"Inter", sans-serif', textAlign: 'center' }}>
-                {isCarousel
-                  ? `Image ${carouselIdx + 1} of ${carouselImages.length} · swipe or use arrows`
-                  : isMobile ? 'Tap image to zoom' : 'Hover & click to zoom'}
-              </p>
-            </div>
+                <p style={{ margin: 0, color: `${step.iconColor}70`, fontSize: '9.5px', fontWeight: 700, letterSpacing: '0.08em', textTransform: 'uppercase', fontFamily: '"Inter", sans-serif', textAlign: 'center' }}>
+                  {isMobile ? 'Tap image to zoom' : 'Hover & click to zoom'}
+                </p>
+              </div>
+            )}
           </div>
 
           {/* RIGHT: CONTENT PANEL */}
-          <div style={{
-            display: 'flex', flexDirection: 'column', gap: isMobile ? '1.1rem' : '1.4rem',
-            padding: isMobile ? '2rem 1.75rem 1.75rem' : '3rem 3.25rem 2.75rem',
-          }}>
-            {/* Icon + title */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: isMobile ? '1.1rem' : '1.4rem', padding: isMobile ? '2rem 1.75rem 1.75rem' : '3rem 3.25rem 2.75rem' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
-              <div style={{
-                width: isMobile ? '44px' : '50px', height: isMobile ? '44px' : '50px',
-                borderRadius: '13px',
-                background: `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)`,
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                boxShadow: `0 6px 20px ${step.iconColor}40`, flexShrink: 0,
-              }}>
+              <div style={{ width: isMobile ? '44px' : '50px', height: isMobile ? '44px' : '50px', borderRadius: '13px', background: `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)`, display: 'flex', alignItems: 'center', justifyContent: 'center', boxShadow: `0 6px 20px ${step.iconColor}40`, flexShrink: 0 }}>
                 <Icon size={isMobile ? 20 : 24} color="white" strokeWidth={2.5} />
               </div>
               <div style={{ flex: 1, minWidth: 0, paddingTop: '3px' }}>
-                <h3 style={{ fontFamily: '"Poppins", sans-serif', fontSize: isMobile ? '15px' : isTablet ? '17px' : '19px', fontWeight: 700, color: BRAND.dark, lineHeight: 1.28, margin: 0 }}>
-                  {step.title}
-                </h3>
+                <h3 style={{ fontFamily: '"Poppins", sans-serif', fontSize: isMobile ? '15px' : isTablet ? '17px' : '19px', fontWeight: 700, color: BRAND.dark, lineHeight: 1.28, margin: 0 }}>{step.title}</h3>
                 <div style={{ marginTop: '8px', height: '3px', width: '40px', background: `linear-gradient(to right, ${step.iconColor}, transparent)`, borderRadius: '2px' }} />
               </div>
             </div>
-
-            {/* Divider */}
             <div style={{ height: '1px', background: `linear-gradient(90deg, ${step.iconColor}25, transparent)`, marginTop: '-0.4rem' }} />
-
-            {/* Description */}
-            <p style={{
-              fontFamily: '"Inter", sans-serif',
-              fontSize: isMobile ? '12.5px' : '13.5px',
-              color: BRAND.slate, lineHeight: 1.7, margin: 0,
-              padding: '1.1rem 1.3rem',
-              background: `linear-gradient(135deg, ${step.iconColor}07, ${step.iconColor}03)`,
-              borderRadius: '12px',
-              border: `1px solid ${step.iconColor}16`,
-            }}>
-              {step.description}
-            </p>
-
-            {/* Key points header */}
+            <p style={{ fontFamily: '"Inter", sans-serif', fontSize: isMobile ? '12.5px' : '13.5px', color: BRAND.slate, lineHeight: 1.7, margin: 0, padding: '1.1rem 1.3rem', background: `linear-gradient(135deg, ${step.iconColor}07, ${step.iconColor}03)`, borderRadius: '12px', border: `1px solid ${step.iconColor}16` }}>{step.description}</p>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <div style={{ height: '2px', width: '18px', background: step.iconColor, borderRadius: '2px' }} />
               <span style={{ fontSize: '9.5px', fontWeight: 800, letterSpacing: '0.1em', textTransform: 'uppercase', color: step.iconColor, fontFamily: '"Inter", sans-serif' }}>Key points</span>
               <div style={{ height: '1.5px', flex: 1, background: `linear-gradient(to right, ${step.iconColor}30, transparent)`, borderRadius: '2px' }} />
             </div>
-
-            {/* Detail bullets */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.65rem', flex: 1, overflowY: 'auto', minHeight: 0 }}>
               {step.details.map((detail: any, i: number) => {
                 const isObj = typeof detail === 'object' && detail !== null && 'message' in detail
@@ -918,49 +536,41 @@ const StepCard = ({ step, isMobile, isTablet, globalIdx, canPrev, canNext, onPre
                 )
               })}
             </div>
-
-            {/* Prev / Next */}
             {!isMobile && (
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', paddingTop: '1.25rem', borderTop: `1px solid ${step.iconColor}18`, flexShrink: 0 }}>
-                <motion.button onClick={onPrev} disabled={!canPrev} whileHover={canPrev ? { scale: 1.04 } : {}} whileTap={canPrev ? { scale: 0.97 } : {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: isMobile ? '0.5rem 0.8rem' : '0.55rem 1rem', background: canPrev ? `linear-gradient(135deg, ${BRAND.mid}, #334155)` : 'rgba(0,0,0,0.04)', color: canPrev ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canPrev ? 'pointer' : 'not-allowed', fontFamily: '"Inter", sans-serif', boxShadow: canPrev ? '0 4px 14px rgba(15,23,42,0.22)' : 'none', transition: 'all 0.2s ease', flexShrink: 0 }}>
-                  <ChevronLeft size={15} strokeWidth={2.5} />
-                  {!isMobile && 'Previous'}
+                <motion.button onClick={onPrev} disabled={!canPrev} whileHover={canPrev ? { scale: 1.04 } : {}} whileTap={canPrev ? { scale: 0.97 } : {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1rem', background: canPrev ? `linear-gradient(135deg, ${BRAND.mid}, #334155)` : 'rgba(0,0,0,0.04)', color: canPrev ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canPrev ? 'pointer' : 'not-allowed', fontFamily: '"Inter", sans-serif', boxShadow: canPrev ? '0 4px 14px rgba(15,23,42,0.22)' : 'none', transition: 'all 0.2s ease', flexShrink: 0 }}>
+                  <ChevronLeft size={15} strokeWidth={2.5} /> Previous
                 </motion.button>
                 <div style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', overflow: 'hidden' }}>
-                {ALL_STEPS.map((_: TutorialStep, i: number) => {
-                  const distance = Math.abs(i - globalIdx)
-                  if (distance > 4) return null
-                  const isActive = i === globalIdx
-                  const isNear = distance === 1
-                  return (
-                    <motion.button key={i} onClick={() => { setIsUserNavigation(true); setGlobalIdx(i) }} animate={{ width: isActive ? 30 : isNear ? 14 : 7, height: 6, opacity: isActive ? 1 : isNear ? 0.6 : 0.28, backgroundColor: isActive ? step.iconColor : isNear ? `${step.iconColor}90` : '#cbd5e1' }} transition={{ duration: 0.25, ease: 'easeInOut' }} style={{ borderRadius: 999, border: 'none', cursor: 'pointer', padding: 0 }} />
-                  )
-                })}
+                  {ALL_STEPS.map((_: TutorialStep, i: number) => {
+                    const distance = Math.abs(i - globalIdx); if (distance > 4) return null
+                    const isActive = i === globalIdx; const isNear = distance === 1
+                    return <motion.button key={i} onClick={() => { setIsUserNavigation(true); setGlobalIdx(i) }} animate={{ width: isActive ? 30 : isNear ? 14 : 7, height: 6, opacity: isActive ? 1 : isNear ? 0.6 : 0.28, backgroundColor: isActive ? step.iconColor : isNear ? `${step.iconColor}90` : '#cbd5e1' }} transition={{ duration: 0.25, ease: 'easeInOut' }} style={{ borderRadius: 999, border: 'none', cursor: 'pointer', padding: 0 }} />
+                  })}
+                </div>
+                <motion.button onClick={onNext} disabled={!canNext} whileHover={canNext ? { scale: 1.04 } : {}} whileTap={canNext ? { scale: 0.97 } : {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: '0.55rem 1rem', background: canNext ? `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)` : 'rgba(0,0,0,0.04)', color: canNext ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canNext ? 'pointer' : 'not-allowed', fontFamily: '"Inter", sans-serif', boxShadow: canNext ? `0 4px 18px ${step.iconColor}45` : 'none', transition: 'all 0.2s ease', flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
+                  {canNext && <motion.div animate={{ x: ['-100%', '120%'] }} transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)', pointerEvents: 'none' }} />}
+                  <span style={{ position: 'relative', zIndex: 1 }}>Next</span>
+                  <ChevronRight size={15} strokeWidth={2.5} style={{ position: 'relative', zIndex: 1 }} />
+                </motion.button>
               </div>
-              <motion.button onClick={onNext} disabled={!canNext} whileHover={canNext ? { scale: 1.04 } : {}} whileTap={canNext ? { scale: 0.97 } : {}} style={{ display: 'flex', alignItems: 'center', gap: '0.3rem', padding: isMobile ? '0.5rem 0.8rem' : '0.55rem 1rem', background: canNext ? `linear-gradient(135deg, ${step.iconColor}, ${step.iconColor}cc)` : 'rgba(0,0,0,0.04)', color: canNext ? 'white' : BRAND.muted, border: 'none', borderRadius: '9px', fontSize: '12px', fontWeight: 600, cursor: canNext ? 'pointer' : 'not-allowed', fontFamily: '"Inter", sans-serif', boxShadow: canNext ? `0 4px 18px ${step.iconColor}45` : 'none', transition: 'all 0.2s ease', flexShrink: 0, position: 'relative', overflow: 'hidden' }}>
-                {canNext && (<motion.div animate={{ x: ['-100%', '120%'] }} transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }} style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent)', pointerEvents: 'none' }} />)}
-                {!isMobile && <span style={{ position: 'relative', zIndex: 1 }}>Next</span>}
-                <ChevronRight size={15} strokeWidth={2.5} style={{ position: 'relative', zIndex: 1 }} />
-              </motion.button>
-            </div>
             )}
           </div>
         </div>
       </motion.div>
 
-      <ZoomModal show={showZoom} onClose={() => setShowZoom(false)} step={{ ...step, image: activeImage }} isMobile={isMobile} />
+      <ZoomModal show={showZoom} onClose={() => setShowZoom(false)} step={step} isMobile={isMobile} zoomSrc={zoomSrc} />
     </>
   )
 }
 
-/* ─── PROGRESS BAR ─── */
+// ─── PROGRESS BAR ─────────────────────────────────────────────────────────────
 interface ProgressBarProps { current: number; total: number; color: string }
 const ProgressBar = ({ current, total, color }: ProgressBarProps) => (
   <div style={{ width: '100%', height: '4px', background: 'rgba(0,0,0,0.08)', borderRadius: '4px', overflow: 'hidden' }}>
     <motion.div animate={{ width: `${((current + 1) / total) * 100}%` }} transition={{ type: 'spring', stiffness: 200, damping: 28 }} style={{ height: '100%', background: `linear-gradient(to right, ${color}, ${color}99)`, borderRadius: '4px', boxShadow: `0 0 8px ${color}60` }} />
   </div>
 )
-
 
 // ─── MAIN PAGE ────────────────────────────────────────────────────────────────
 export default function TutorialPage() {
@@ -969,8 +579,9 @@ export default function TutorialPage() {
   const [globalIdx, setGlobalIdx] = useState(0)
   const [viewMode, setViewMode] = useState('step')
   const [sidebarOpen, setSidebarOpen] = useState(false)
-  const contentRef = useRef(null)
-  const footerRef = useRef(null)
+  // FIX 2 & 3: type refs correctly so .getBoundingClientRect() doesn't error
+  const contentRef = useRef<HTMLDivElement>(null)
+  const footerRef  = useRef<HTMLDivElement>(null)
   const isFirstRender = useRef(true)
   const [footerOffset, setFooterOffset] = useState(0)
   const [isUserNavigation, setIsUserNavigation] = useState(false)
@@ -978,34 +589,18 @@ export default function TutorialPage() {
   const currentSection = tutorialSections.find(s => s.steps.some((st: any) => st.number === currentStep.number))
   const canPrev = globalIdx > 0
   const canNext = globalIdx < TOTAL_STEPS - 1
-  const prev = useCallback(() => {
-  if (canPrev) {
-    setIsUserNavigation(true)
-    setGlobalIdx(i => i - 1)
+
+  const prev = useCallback(() => { if (canPrev) { setIsUserNavigation(true); setGlobalIdx(i => i - 1) } }, [canPrev])
+  const next = useCallback(() => { if (canNext) { setIsUserNavigation(true); setGlobalIdx(i => i + 1) } }, [canNext])
+
+  const handleStepClick = (idx: number) => {
+    setIsUserNavigation(true); setGlobalIdx(idx)
+    if (viewMode === 'overview') {
+      setTimeout(() => { document.getElementById(`overview-step-${idx}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }, 50)
+    }
   }
-}, [canPrev])
 
-const next = useCallback(() => {
-  if (canNext) {
-    setIsUserNavigation(true)
-    setGlobalIdx(i => i + 1)
-  }
-}, [canNext])
-
-const handleStepClick = (idx: number) => {
-  setIsUserNavigation(true)
-  setGlobalIdx(idx)
-
-  if(viewMode === 'overview') {
-    setTimeout(() => {
-      const card = document.getElementById(`overview-step-${idx}`)
-      card?.scrollIntoView({behavior: 'smooth', block: 'center'})
-  },50)
-}
-}
-  useEffect(() => {
-  window.scrollTo({ top: 0, behavior: 'instant' })
-}, [])
+  useEffect(() => { window.scrollTo({ top: 0, behavior: 'instant' }) }, [])
 
   useEffect(() => {
     const updateOffset = () => {
@@ -1028,7 +623,6 @@ const handleStepClick = (idx: number) => {
     return () => window.removeEventListener('keydown', fn)
   }, [next, prev])
 
-
   useEffect(() => {
     const link = document.createElement('link')
     link.href = 'https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&family=Inter:wght@400;500;600&display=swap'
@@ -1046,37 +640,18 @@ const handleStepClick = (idx: number) => {
     return () => window.removeEventListener('resize', fn)
   }, [])
 
-  useEffect(() => {
-    setSidebarOpen(!isMobile && !isTablet)
-  }, [isMobile, isTablet])
+  useEffect(() => { setSidebarOpen(!isMobile && !isTablet) }, [isMobile, isTablet])
 
   useEffect(() => {
-
-  if (isFirstRender.current) {
-    isFirstRender.current = false
-    return
-  }
-
-  if (!isUserNavigation) return
-  if (!contentRef.current) return
-
-  const stickyNav = document.querySelector('[data-sticky-nav]') as HTMLElement | null
-
-  const navHeight = stickyNav
-    ? stickyNav.getBoundingClientRect().height
-    : 72
-
-  const elementTop =
-    contentRef.current.getBoundingClientRect().top + window.pageYOffset
-
-  window.scrollTo({
-    top: elementTop - navHeight - 20,
-    behavior: 'smooth'
-  })
-
-  setIsUserNavigation(false)
-
-}, [globalIdx])
+    if (isFirstRender.current) { isFirstRender.current = false; return }
+    if (!isUserNavigation) return
+    if (!contentRef.current) return
+    const stickyNav = document.querySelector('[data-sticky-nav]') as HTMLElement | null
+    const navHeight = stickyNav ? stickyNav.getBoundingClientRect().height : 72
+    const elementTop = contentRef.current.getBoundingClientRect().top + window.pageYOffset
+    window.scrollTo({ top: elementTop - navHeight - 20, behavior: 'smooth' })
+    setIsUserNavigation(false)
+  }, [globalIdx])
 
   return (
     <div style={{ minHeight: '100vh', fontFamily: '"Inter", sans-serif', background: 'linear-gradient(180deg, #ecfeff 0%, #f8fafc 30%, #ffffff 100%)', position: 'relative', width: '100%', overflowX: 'hidden' }}>
