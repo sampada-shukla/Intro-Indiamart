@@ -25,9 +25,9 @@ import {
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-import logoImage from "./components/assets/logo_1.png";
+import logoImage from "./components/assets/logo.png";
 import create_account from "./components/assets/create_account.png";
-import sign_in from "./components/assets/sign_in.png";
+import sign_in from "./components/assets/login_page.png";
 import forgot_password from "./components/assets/forgot_password.png";
 import account_settings from "./components/assets/account_settings.png";
 import connection_url from "./components/assets/connection_url.png";
@@ -969,42 +969,129 @@ const handleStepClick = (idx: number) => {
 
 }, [globalIdx])
 
-  return (
+ return (
     <div style={{ minHeight: '100vh', fontFamily: '"Inter", sans-serif', background: 'linear-gradient(180deg, #ecfeff 0%, #f8fafc 30%, #ffffff 100%)', position: 'relative', width: '100%', overflowX: 'hidden' }}>
-      <IndexSidebar activeGlobalIdx={globalIdx} onJump={handleStepClick} isOpen={sidebarOpen} onToggle={() => setSidebarOpen(o => !o)} isMobile={isMobile} footerOffset={footerOffset} />
-      <motion.div animate={{ marginLeft: (!isMobile && sidebarOpen) ? 272 : 0 }} transition={{ type: 'spring', stiffness: 340, damping: 34 }}>
+
+      <IndexSidebar
+        activeGlobalIdx={globalIdx}
+        onJump={handleStepClick}
+        isOpen={sidebarOpen}
+        onToggle={() => setSidebarOpen(o => !o)}
+        isMobile={isMobile}
+        footerOffset={footerOffset}
+      />
+
+      <motion.div
+        animate={{ marginLeft: (!isMobile && sidebarOpen) ? 272 : 0 }}
+        transition={{ type: 'spring', stiffness: 340, damping: 34 }}
+      >
 
         {/* HERO */}
-        <section style={{ padding: isMobile ? '2rem 1rem' : isTablet ? '2.5rem 1.5rem' : '3rem 1.5rem', minHeight: isMobile ? 'auto' : '500px', display: 'flex', alignItems: 'center', background: 'linear-gradient(135deg, #ecfeff 0%, #ffffff 50%, #ecfeff 100%)' }}>
-          <div style={{ maxWidth: '1280px', margin: '0 auto', width: '100%', padding: isMobile ? '0 0.5rem' : '0 1.5rem' }}>
-            <div style={{ display: isMobile ? 'flex' : 'grid', flexDirection: isMobile ? 'column' : undefined, gridTemplateColumns: isMobile ? undefined : isTablet ? '1fr' : '1.1fr 0.9fr', gap: isMobile ? '2rem' : isTablet ? '2.5rem' : '3rem', alignItems: isMobile ? 'start' : 'center' }}>
-              {isMobile && <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.05 }} style={{ display: 'flex', alignItems: 'start', justifyContent: 'flex-start', marginBottom: '0rem' }}><img src={logoImage} alt="InteGrow Logo" style={{ width: '12rem', height: 'auto', objectFit: 'contain' }} /></motion.div>}
-              {isMobile && <motion.div style={{ width: '100%', maxWidth: '560px', margin: '0 auto', marginTop: '2rem', paddingRight: '2rem', paddingLeft: '1rem' }} animate={{ y: [0, -12, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}><TutorialVideo /></motion.div>}
-              <div style={{ maxWidth: isMobile ? '100%' : '650px', marginTop: isMobile ? '0' : '-2.5rem' }}>
-                <motion.h1 initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }} style={{ fontFamily: '"Poppins", sans-serif', fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px', fontWeight: 700, marginTop: '0', paddingTop: '0', marginBottom: '1rem', lineHeight: isMobile ? '38px' : isTablet ? '46px' : '58px', letterSpacing: '-0.025em' }}>
-                  {!isMobile && <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.05 }} style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-start', marginBottom: '-0.75rem' }}><img src={logoImage} alt="InteGrow Logo" style={{ width: isTablet ? '11rem' : '16rem', height: 'auto', objectFit: 'contain' }} /></motion.div>}
-                  <span style={{ color: 'rgb(6, 182, 212)', fontWeight: 900 }}>Explore InteGrow</span>{' '}<span style={{ color: '#0F172A' }}>with Detailed Step-by-Step Tutorials</span>
-                </motion.h1>
-                <motion.p initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2 }} style={{ fontFamily: '"Inter", sans-serif', fontSize: isMobile ? '14px' : '16px', fontWeight: 400, color: '#475569', marginTop: '-0.75rem', marginBottom: '1.5rem', lineHeight: isMobile ? '22px' : '26px' }}>
-                  Learn how to automate your IndiaMART lead pipeline and sync inquiries directly into your CRM, with comprehensive tutorials covering setup and integration.
-                </motion.p>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
-                  {['Quick start guides for instant setup', 'Advanced feature walkthroughs', 'How it works steps for smooth onboarding'].map((feature, idx) => (
-                    <motion.div key={feature} initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.3 + idx * 0.1 }} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
-                      <div style={{ width: isMobile ? '1.75rem' : '2.25rem', height: isMobile ? '1.75rem' : '2.25rem', borderRadius: '0.5rem', background: 'rgba(6, 182, 212, 0.15)', border: '2px solid rgb(6, 182, 212)', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
-                        <CheckCircle style={{ width: isMobile ? '1rem' : '1.25rem', height: isMobile ? '1rem' : '1.25rem', color: 'rgb(6, 182, 212)' }} />
-                      </div>
-                      <span style={{ fontFamily: "'Inter', sans-serif", fontSize: isMobile ? '14px' : '16px', fontWeight: 500, color: '#475569', lineHeight: isMobile ? '22px' : '26px' }}>{feature}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-              {!isMobile && <motion.div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '4rem' }} animate={{ y: [0, -12, 0] }} transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}><TutorialVideo /></motion.div>}
-            </div>
-          </div>
-        </section>
+    <section style={{ padding: isMobile ? '1rem 1rem' : isTablet ? '2.5rem 1.5rem' : '3rem 1.5rem', minHeight: isMobile ? 'auto' : '500px', display: 'flex', alignItems: isMobile ? 'flex-start' : 'center', background: 'linear-gradient(135deg, #ecfeff 0%, #ffffff 50%, #ecfeff 100%)' }}>
+  <div style={{ maxWidth: '1280px', margin: '0 auto', width: '100%', padding: isMobile ? '0 0.5rem' : '0 1.5rem' }}>
+    <div style={{ display: isMobile ? 'flex' : 'grid', flexDirection: isMobile ? 'column' : undefined, gridTemplateColumns: isMobile ? undefined : isTablet ? '1fr' : '1.1fr 0.9fr', gap: isMobile ? '1rem' : isTablet ? '2.5rem' : '3rem', alignItems: isMobile ? 'flex-start' : 'center' }}>
 
-        {/* SECTION HEADER */}
+      {/* ── MOBILE ONLY: Logo at very top, above video ── */}
+      {isMobile && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          style={{ marginBottom: '-0.5rem' }}
+        >
+          <img
+            src={logoImage}
+            alt="Hire2-OnBoard"
+            style={{
+              height: '80px',
+              width: 'auto',
+              maxWidth: '320px',
+              objectFit: 'contain',
+              display: 'block',
+            }}
+          />
+        </motion.div>
+      )}
+
+      {/* ── MOBILE ONLY: Video below logo ── */}
+      {isMobile && (
+        <motion.div style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '0' }}>
+          <TutorialVideo />
+        </motion.div>
+      )}
+
+      {/* ── TEXT COLUMN (both mobile and desktop) ── */}
+      <div style={{ maxWidth: isMobile ? '100%' : '650px', marginTop: isMobile ? '-0.5rem' : '0' }}>
+
+    
+
+        {/* ── DESKTOP / TABLET ONLY: Logo above heading ── */}
+        {!isMobile && (
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+          style={{ marginBottom: '0.5rem', marginTop: '-5rem' }}
+          >
+            <img
+              src={logoImage}
+              alt="Hire2-OnBoard"
+              style={{
+                height: isTablet ? '100px' : '120px',
+                width: 'auto',
+                maxWidth: '400px',
+                objectFit: 'contain',
+                display: 'block',
+              }}
+            />
+          </motion.div>
+        )}
+
+        <motion.h1
+          initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }}
+          style={{ fontFamily: '"Poppins", sans-serif', fontSize: isMobile ? '28px' : isTablet ? '36px' : '48px', fontWeight: 700, marginTop: '0rem', marginBottom: '0.75rem', lineHeight: isMobile ? '38px' : isTablet ? '46px' : '58px', letterSpacing: '-0.025em' }}
+        >
+          <span style={{ color: BRAND.primary, fontWeight: 900 }}>Explore Integrow</span>{' '}
+          <span style={{ color: BRAND.dark }}>with Detailed Step-by-Step Tutorials</span>
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          style={{ fontFamily: '"Inter", sans-serif', fontSize: isMobile ? '14px' : '16px', fontWeight: 400, color: BRAND.slate, marginTop: '0.25rem', marginBottom: '1.5rem', lineHeight: isMobile ? '22px' : '26px' }}
+        >
+        Learn how to automate your IndiaMART lead pipeline and sync inquiries directly into your CRM, with comprehensive tutorials covering setup and integration.
+        </motion.p>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '0.85rem' }}>
+          {['Quick start guides for instant setup', 'Advanced feature walkthroughs', 'How it works steps for smooth onboarding'].map((feature, idx) => (
+            <motion.div key={feature} initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.3 + idx * 0.1 }} style={{ display: 'flex', alignItems: 'center', gap: '0.85rem' }}>
+              <div style={{ width: isMobile ? '1.75rem' : '2.25rem', height: isMobile ? '1.75rem' : '2.25rem', borderRadius: '0.5rem', background: `${BRAND.primary}18`, border: `2px solid ${BRAND.primary}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <CheckCircle style={{ width: isMobile ? '1rem' : '1.25rem', height: isMobile ? '1rem' : '1.25rem', color: BRAND.primary }} />
+              </div>
+              <span style={{ fontFamily: '"Inter", sans-serif', fontSize: isMobile ? '14px' : '16px', fontWeight: 500, color: BRAND.slate, lineHeight: isMobile ? '22px' : '26px' }}>{feature}</span>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
+      {/* ── DESKTOP ONLY: Video on the right ── */}
+      {!isMobile && (
+        <motion.div
+          style={{ width: '100%', display: 'flex', justifyContent: 'center', marginTop: '3rem' }}
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+        >
+          <TutorialVideo />
+        </motion.div>
+      )}
+
+    </div>
+  </div>
+</section>
+
+{/* SECTION HEADER */}
         <section style={{ padding: isMobile ? '2.5rem 1rem 1.5rem' : '3rem 1.5rem 2rem', background: 'linear-gradient(to bottom, rgba(255,255,255,0), #f8fafc)' }}>
           <div style={{ maxWidth: '1280px', margin: '0 auto', textAlign: 'center', padding: isMobile ? '0 0.5rem' : '0 1.5rem' }}>
             <motion.h2 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} viewport={{ once: true }} style={{ fontFamily: '"Poppins", sans-serif', fontSize: isMobile ? '28px' : isTablet ? '34px' : '40px', fontWeight: 700, color: 'rgb(20,47,83)', marginBottom: '0.75rem', lineHeight: isMobile ? '36px' : isTablet ? '42px' : '48px' }}>Complete Step-by-Step Guide</motion.h2>
